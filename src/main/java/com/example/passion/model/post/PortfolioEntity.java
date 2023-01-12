@@ -1,10 +1,12 @@
-package com.example.passion.model;
+package com.example.passion.model.post;
 
+import com.example.passion.model.etc.CategoryEntity;
+import com.example.passion.model.user.UserEntity;
+import com.example.passion.model.comment.CommentEntity;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 public class PortfolioEntity {
@@ -15,7 +17,6 @@ public class PortfolioEntity {
     @Column
     String title;
 
-    @Column
     @ManyToOne
     @JoinColumn(name="userId")
     UserEntity userId;//객체로 대체할것

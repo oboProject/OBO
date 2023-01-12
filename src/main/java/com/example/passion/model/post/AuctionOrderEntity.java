@@ -1,9 +1,7 @@
-package com.example.passion.model;
+package com.example.passion.model.post;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.example.passion.model.user.UserEntity;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
@@ -12,7 +10,9 @@ public class AuctionOrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     String auctionId;
-    String userId;
+
+    @OneToOne
+    UserEntity userId;
     Date orderAt;
     Date deadline;
     int orderPrice;

@@ -1,11 +1,10 @@
-package com.example.passion.model;
+package com.example.passion.model.user;
 
 import com.example.passion.constant.Withdrawal;
 import com.example.passion.model.base.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.Data;
-import org.apache.catalina.User;
 
 import java.util.ArrayList;
 import java.util.List;

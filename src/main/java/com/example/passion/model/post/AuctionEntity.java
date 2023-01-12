@@ -1,5 +1,8 @@
-package com.example.passion.model;
+package com.example.passion.model.post;
 
+import com.example.passion.model.etc.CategoryEntity;
+import com.example.passion.model.etc.TagEntity;
+import com.example.passion.model.user.UserEntity;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;

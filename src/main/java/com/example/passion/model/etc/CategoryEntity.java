@@ -1,4 +1,4 @@
-package com.example.passion.model;
+package com.example.passion.model.etc;
 
 
 import com.example.passion.model.base.BaseEntity;
