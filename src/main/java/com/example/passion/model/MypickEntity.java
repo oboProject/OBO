@@ -1,5 +1,7 @@
 package com.example.passion.model;
 
+import com.example.passion.constant.Withdrawal;
+import com.example.passion.model.base.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,12 +14,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name="MYPICK")
-public class MypickEntity extends BaseEntity{
+public class MypickEntity extends BaseEntity {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String mypickId;
+
     @ManyToOne
     @JoinColumn(name="USER")
-    private String userId;
+    private UserEntity userId;
 
-    String withdrawal;// 객체로 대체할것
+    Withdrawal withdrawal;// 객체로 대체할것
 }

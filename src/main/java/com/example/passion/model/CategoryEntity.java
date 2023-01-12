@@ -1,6 +1,7 @@
 package com.example.passion.model;
 
 
+import com.example.passion.model.base.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -15,7 +16,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name="CATEGORY")
-public class CategoryEntity extends BaseEntity{
+public class CategoryEntity extends BaseEntity {
     @Id
     private String categoryId;
     private String categoryName;

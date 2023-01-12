@@ -1,12 +1,30 @@
 package com.example.passion.model;
 
-public class AgoraEntity {
+import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+public class AgoraEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     String portfolioId;// f key
     String title;   //제목임
-    String userId; //f key
-    String categoryId;//카테고리 아이디
+
+    @OneToOne
+    UserEntity userId; //f key
+
+    @OneToOne
+    @JoinColumn(name="categoryId")
+    CategoryEntity categoryId;//카테고리 아이디
+
     String views;// 조회수
-    String comment;// 외부 객체ㄹ임
-    String tag;// 태그도 새로 만들거임
+    @OneToMany
+    @JoinColumn(name="comment")
+    List<CommentEntity> commentEntityList = new ArrayList<>();// 외부 객체ㄹ임
+
+    @OneToMany
+    @JoinColumn(name = "tagId")
+    List<TagEntity> tag = new ArrayList<>();// 태그도 새로 만들거임
 }

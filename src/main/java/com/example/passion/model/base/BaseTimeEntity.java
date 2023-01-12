@@ -1,4 +1,4 @@
-package com.example.passion.model;
+package com.example.passion.model.base;
 
 import lombok.Getter;
 import lombok.Setter;
