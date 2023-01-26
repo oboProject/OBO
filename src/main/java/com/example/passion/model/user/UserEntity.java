@@ -42,7 +42,23 @@ public class UserEntity extends BaseEntity {
     @OneToMany
     List<PortfolioEntity> portfolioEntities = new ArrayList<>();
 
-//
+    public UserEntity update(String userId, String displayName, String email, String password, String state,
+                             String city, String userInfo, String career, String education, String company) {
+        this.userId = userId;
+        this.displayName = displayName;
+        this.email = email;
+        this.password = password;
+        this.state = state;
+        this.city = city;
+        this.userInfo = userInfo;
+        this.career = career;
+        this.education = education;
+        this.company = company;
+
+        return this;
+    }
+
+    //
 //    @ManyToOne
 //    @JoinColumn
 //    private UserEntity userFollowing = this;

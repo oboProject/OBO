@@ -11,4 +11,5 @@ public interface UserMapper {
     UserDTO.ResponseUserDto userEntityToResponseUserDto(UserEntity userEntity);
     UserDTO.RequestUserDto userResponseDtoToUserRequestDto(UserDTO.ResponseUserDto responseUserDto);
     UserDTO.ResponseUserDto userRequestDtoToUserResponseDto(UserDTO.RequestUserDto requestUserDto);
+
 }
