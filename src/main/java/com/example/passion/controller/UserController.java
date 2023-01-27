@@ -1,7 +1,6 @@
 package com.example.passion.controller;
 
 import com.example.passion.dto.UserDTO;
-import com.example.passion.model.user.UserEntity;
 import com.example.passion.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

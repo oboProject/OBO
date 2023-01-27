@@ -1,15 +1,14 @@
-package com.example.passion.Mapper;
+package com.example.passion.mapper;
 
-import com.example.passion.dto.PortfolioDTO;
-import com.example.passion.model.post.PortfolioEntity;
+import com.example.passion.dto.PortfolioRequestDTO;
+import com.example.passion.dto.PortfolioResponseDTO;
+import com.example.passion.domain.post.PortfolioEntity;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface PortfolioMapper {
-
-    PortfolioEntity responsePortfolioDtoToPortfolioEntity(PortfolioDTO.ResponsePortfolioDto responsePortfolioDto);
-    PortfolioEntity requestPortfolioDtoToPortfolioEntity(PortfolioDTO.RequestPortfolioDto requestPortfolioDto);
-    PortfolioDTO.RequestPortfolioDto responsePortfolioToRequestPortfolio(PortfolioDTO.ResponsePortfolioDto responsePortfolioDto);
-    PortfolioDTO.ResponsePortfolioDto requestPortfolioToResponsePortfolio(PortfolioDTO.RequestPortfolioDto requestPortfolioDto);
-
+    PortfolioEntity portfolioResponseDtoToPortfolioEntity(PortfolioResponseDTO portfolioResponseDTO);
+    PortfolioEntity portfolioRequestDtoToPortfolioEntity(PortfolioRequestDTO portfolioRequestDTO);
+    PortfolioRequestDTO portfolioEntityToPortfolioRequestDto(PortfolioEntity portfolioEntity);
+    PortfolioResponseDTO portfolioEntityToPortfolioResponseDto(PortfolioEntity portfolioEntity);
 }

@@ -1,11 +1,6 @@
 package com.example.passion.dto;
 
-import com.example.passion.constant.Withdrawal;
-import com.example.passion.model.post.PortfolioEntity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import com.example.passion.domain.post.PortfolioEntity;
 import jakarta.validation.constraints.Email;
 import lombok.*;
 
