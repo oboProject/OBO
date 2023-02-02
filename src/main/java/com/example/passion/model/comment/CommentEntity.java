@@ -1,9 +1,9 @@
-package com.example.passion.domain.comment;
+package com.example.passion.model.comment;
 
-import com.example.passion.domain.etc.MypickEntity;
-import com.example.passion.domain.post.PortfolioEntity;
-import com.example.passion.domain.user.UserEntity;
-import com.example.passion.domain.base.BaseEntity;
+import com.example.passion.model.etc.MypickEntity;
+import com.example.passion.model.post.PortfolioEntity;
+import com.example.passion.model.user.UserEntity;
+import com.example.passion.model.base.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

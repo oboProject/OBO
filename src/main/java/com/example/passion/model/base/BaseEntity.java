@@ -1,4 +1,4 @@
-package com.example.passion.domain.base;
+package com.example.passion.model.base;
 
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;

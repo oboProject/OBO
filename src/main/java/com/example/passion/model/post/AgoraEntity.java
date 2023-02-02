@@ -1,9 +1,9 @@
-package com.example.passion.domain.post;
+package com.example.passion.model.post;
 
-import com.example.passion.domain.etc.CategoryEntity;
-import com.example.passion.domain.etc.TagEntity;
-import com.example.passion.domain.user.UserEntity;
-import com.example.passion.domain.comment.CommentEntity;
+import com.example.passion.model.etc.CategoryEntity;
+import com.example.passion.model.etc.TagEntity;
+import com.example.passion.model.user.UserEntity;
+import com.example.passion.model.comment.CommentEntity;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -31,4 +31,5 @@ public class AgoraEntity {
     @OneToMany
     @JoinColumn(name = "tagId")
     List<TagEntity> tag = new ArrayList<>();// 태그도 새로 만들거임
+
 }

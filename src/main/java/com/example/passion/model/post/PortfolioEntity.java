@@ -1,9 +1,20 @@
-package com.example.passion.domain.post;
+package com.example.passion.model.post;
 
-import com.example.passion.domain.user.UserEntity;
+import com.example.passion.model.user.UserEntity;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
+@AllArgsConstructor
+@Builder
+@NoArgsConstructor
+@Data
 public class PortfolioEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -36,6 +47,10 @@ public class PortfolioEntity {
 
         return this;
     }
+
+    @OneToMany
+    @JoinColumn(name = "imageEntityId")
+    List<ImageEntity> imageEntities = new ArrayList<>();
 
 //
 //    @OneToMany(mappedBy = "portfolioEntity")

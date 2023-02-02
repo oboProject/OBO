@@ -1,8 +1,8 @@
-package com.example.passion.domain.user;
+package com.example.passion.model.user;
 
 import com.example.passion.constant.Withdrawal;
-import com.example.passion.domain.base.BaseEntity;
-import com.example.passion.domain.post.PortfolioEntity;
+import com.example.passion.model.base.BaseEntity;
+import com.example.passion.model.post.PortfolioEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.Data;

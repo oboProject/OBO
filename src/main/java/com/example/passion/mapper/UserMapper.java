@@ -1,7 +1,7 @@
 package com.example.passion.mapper;
 
 import com.example.passion.dto.UserDTO;
-import com.example.passion.domain.user.UserEntity;
+import com.example.passion.model.user.UserEntity;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

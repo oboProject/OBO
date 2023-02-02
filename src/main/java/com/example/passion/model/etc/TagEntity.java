@@ -1,6 +1,6 @@
-package com.example.passion.domain.etc;
+package com.example.passion.model.etc;
 
-import com.example.passion.domain.base.BaseEntity;
+import com.example.passion.model.base.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

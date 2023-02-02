@@ -1,6 +1,6 @@
 package com.example.passion.repository;
 
-import com.example.passion.domain.post.PortfolioEntity;
+import com.example.passion.model.post.PortfolioEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

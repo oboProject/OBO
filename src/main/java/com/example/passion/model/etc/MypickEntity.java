@@ -1,8 +1,8 @@
-package com.example.passion.domain.etc;
+package com.example.passion.model.etc;
 
 import com.example.passion.constant.Withdrawal;
-import com.example.passion.domain.base.BaseEntity;
-import com.example.passion.domain.user.UserEntity;
+import com.example.passion.model.base.BaseEntity;
+import com.example.passion.model.user.UserEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

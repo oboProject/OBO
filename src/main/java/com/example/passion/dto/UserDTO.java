@@ -1,6 +1,6 @@
 package com.example.passion.dto;
 
-import com.example.passion.domain.post.PortfolioEntity;
+import com.example.passion.model.post.PortfolioEntity;
 import jakarta.validation.constraints.Email;
 import lombok.*;
 
