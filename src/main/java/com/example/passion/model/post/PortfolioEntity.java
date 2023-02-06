@@ -39,12 +39,12 @@ public class PortfolioEntity {
     @ManyToOne
     private UserEntity userEntity;
 
-    public PortfolioEntity update(String title, String description, int views, int pick){
+    public PortfolioEntity update(String title, String description, int views, int pick, List<ImageEntity> imageEntities){
         this.title = title;
         this.description = description;
         this.views = views;
         this.pick = pick;
-
+        this.imageEntities = imageEntities;
         return this;
     }
 

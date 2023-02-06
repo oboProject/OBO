@@ -58,33 +58,47 @@ public class PortfolioService implements PostCRUD<PortfolioDTO.ResponsePortfolio
 
 
         portfolioRepository.save(portfolioEntity);
-        return mapper.portfolioEntityToResponsePortfolioDTO(portfolioEntity);
+        return mapper.portfolioEntityToPortfolioResponseDto(portfolioEntity);
     }
 
     @Override
-    public PortfolioDTO.ResponsePortfolioDTO delete(PortfolioDTO.RequestPortfolioDTO portfolioRequestDTO) {
-        portfolioRepository.delete(mapper.portfolioRequestDtoToPortfolioEntity(portfolioRequestDTO));
+    public PortfolioDTO.ResponsePortfolioDTO delete(PortfolioDTO.RequestPortfolioDTO requestPortfolioDTO) {
+        portfolioRepository.delete(mapper.portfolioRequestDtoToPortfolioEntity(requestPortfolioDTO));
         return new PortfolioDTO.ResponsePortfolioDTO();
     }
 
     @Override
     @Transactional
-    public PortfolioDTO.ResponsePortfolioDTO modify(PortfolioDTO.RequestPortfolioDTO portfolioRequestDTO) {
+    public PortfolioDTO.ResponsePortfolioDTO modify(PortfolioDTO.RequestPortfolioDTO requestPortfolioDTO) {
 
-        PortfolioEntity modifiedPortfolioEntity = mapper.portfolioRequestDtoToPortfolioEntity(portfolioRequestDTO);
-        Optional<PortfolioEntity> OriginalInOptional = portfolioRepository.findById(portfolioRequestDTO.getPortfolioId());
+        PortfolioEntity modifiedPortfolioEntity = mapper.portfolioRequestDtoToPortfolioEntity(requestPortfolioDTO);
+        Optional<PortfolioEntity> OriginalInOptional = portfolioRepository.findById(requestPortfolioDTO.getPortfolioId());
 
         try {
-            //todo 수정 요망 imageHandler.updateImage(portfolioRequestDTO.getRequestImageDTOS());
+            List<ImageDTO.BuffImageDTO> buffImageDTOS =
+                    requestPortfolioDTO
+                            .getRequestImageDTOS()
+                            .stream()
+
+                            .map(imageHandler::updateImage)
+                            .collect(Collectors.toList());
+
+            List<ImageEntity> imageEntities =
+                    buffImageDTOS
+                            .stream()
+                            .map(imageMapper::buffImageDtoToImageEntity)
+                            .collect(Collectors.toList());
 
             PortfolioEntity portfolioOriginal = OriginalInOptional.get();
             portfolioOriginal.update(
-                    portfolioRequestDTO.getTitle(),
-                    portfolioRequestDTO.getDescription(),
-                    portfolioRequestDTO.getViews(),
-                    portfolioRequestDTO.getPick()
+                    requestPortfolioDTO.getTitle(),
+                    requestPortfolioDTO.getDescription(),
+                    requestPortfolioDTO.getViews(),
+                    requestPortfolioDTO.getPick(),
+                    imageEntities
             );
-            return mapper.portfolioEntityToResponsePortfolioDTO(portfolioOriginal);
+
+            return mapper.portfolioEntityToPortfolioResponseDto(portfolioOriginal);
         } catch(NoSuchElementException e){
             System.out.println("OriginalInOptional이 null입니다.");
             return null;
@@ -92,22 +106,24 @@ public class PortfolioService implements PostCRUD<PortfolioDTO.ResponsePortfolio
     }
 
     @Override
-    public List<PortfolioDTO.ResponsePortfolioDTO> read(PortfolioDTO.RequestPortfolioDTO portfolioRequestDTO) {
-        List<PortfolioDTO.ResponsePortfolioDTO> portfolioResponseDTOS = new ArrayList<>();
-        String title = portfolioRequestDTO.getTitle();
+    public List<PortfolioDTO.ResponsePortfolioDTO> read(PortfolioDTO.RequestPortfolioDTO requestPortfolioDTO) {
+        List<PortfolioDTO.ResponsePortfolioDTO> responsePortfolioDTOS = new ArrayList<>();
+        String title = requestPortfolioDTO.getTitle();
 
-        portfolioResponseDTOS.add(
-                mapper.portfolioEntityToResponsePortfolioDTO(
+        responsePortfolioDTOS.add(
+                mapper.portfolioEntityToPortfolioResponseDto(
                         portfolioRepository.findByTitle(title)));
 
-        return portfolioResponseDTOS;
+        return responsePortfolioDTOS;
     }
 
-    public List<PortfolioEntity> readAll() { return portfolioRepository.findAll(); }
-
-    public PortfolioEntity getPortfolioById(String portfolioId){
-        PortfolioEntity portfolioEntity = portfolioRepository.findById(portfolioId).orElseThrow();
-        return portfolioEntity;
+    public PortfolioDTO.ResponsePortfolioDTO readById(String portfolioId){
+       PortfolioDTO.ResponsePortfolioDTO responsePortfolioDTO =
+               mapper.portfolioEntityToPortfolioResponseDto(portfolioRepository
+                       .findById(portfolioId)
+                       .get()
+               );
+        return responsePortfolioDTO;
     }
 
 }

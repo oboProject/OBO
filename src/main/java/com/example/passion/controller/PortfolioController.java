@@ -50,11 +50,11 @@ public class PortfolioController {
     @GetMapping("get/{portfolioId}")
     public ResponseEntity getPortfolioEntityById(@PathVariable("portfolioId") String portfolioId){
 
-          return  new ResponseEntity(portfolioService.getPortfolioById(portfolioId),HttpStatus.OK);
+          return new ResponseEntity(portfolioService.readById(portfolioId),HttpStatus.OK);
     }
 
     @GetMapping("/get")
-    public ResponseEntity getPortfolioEntity(@RequestParam String title){
+    public ResponseEntity getPortfolioEntityByTitle(@RequestParam String title){
         PortfolioDTO.RequestPortfolioDTO requestPortfolioDTO =
                 PortfolioDTO.RequestPortfolioDTO.builder().
                         title(title).
